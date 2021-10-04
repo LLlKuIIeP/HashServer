@@ -1,0 +1,9 @@
+[submodule "extern/hash-librar/hash-library"]
+	path = extern/hash-librar/hash-library
+	url = https://github.com/stbrumme/hash-library.git
+[submodule "extern/hash-library/hash-library"]
+	path = extern/hash-library/hash-library
+	url = https://github.com/stbrumme/hash-library.git
+[submodule "extern/Catch2"]
+	path = extern/Catch2
+	url = https://github.com/catchorg/Catch2.git
