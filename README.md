@@ -1,6 +1,17 @@
-# NetworkOptix
+# Hash Server
+
+A TCP server project that computes the hash of a string. The server opens a port and accepts lines separated by a newline character. The result of the hash string operation in hexadecimal format.
+
 
 ## Dependencies
+- [CMake](#cmake)
+- [Poco](#poco)
+
+
+## License
+- [License MIT](#license-mit)
+
+
 Windows 10
 1. [cmake](https://cmake.org/download/)
 2. [ninja](https://github.com/ninja-build/ninja/releases)  + add PATH(C:\ninja)
@@ -85,3 +96,25 @@ cmake --build . -j $(nproc)
 cmake -G Ninja -S ../NetworkOptix/ -B . -DCMAKE_BUILD_TYPE:STRING=Release
 cmake --build . -- /m
 ```
+
+## CMake
+
+[CMake](https://github.com/Kitware/CMake) version 3.21.3 or later.
+
+## Poco
+
+[Poco](https://github.com/pocoproject/poco) version 1.11.0 or later.
+
+## License MIT
+
+<img align="right" src="https://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
+
+The class is licensed under the [MIT License](https://opensource.org/licenses/MIT):
+
+Copyright &copy; 2021-2021 Sergey Abramov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
