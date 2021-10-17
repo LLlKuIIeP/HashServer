@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
-include(../../general_cmake/general.cmake)
+include(../../cmake/general.cmake)
 set(ROOT_PATH .)
 
 set_project_settings(my_server)
@@ -8,8 +8,8 @@ set_project_settings(my_server)
 find_package(Poco REQUIRED Net)
 
 if (MSVC)
-  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
-  set(BUILD_SHARED_LIBS TRUE)
+  #set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+  #set(BUILD_SHARED_LIBS TRUE)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/Debug)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/Release)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO ${CMAKE_BINARY_DIR}/RelWithDebInfo)
@@ -18,23 +18,19 @@ endif ()
 set(PUBLIC_H ${ROOT_PATH}/include/public)
 set(PRIVATE_H ${ROOT_PATH}/include/private)
 
-set(PUBLIC_SRC ${ROOT_PATH}/src/public)
-set(PRIVATE_SRC ${ROOT_PATH}/src/private)
-
 set(HEADERS
 ### PUBLIC
   ${PUBLIC_H}/my_server.h
-  ${PUBLIC_H}/hash_type.h
 ### PRIVATE
-  ${PRIVATE_H}/hash_connection.h
+  ${PRIVATE_H}/md5_connection.h
+  ${PRIVATE_H}/sha1_connection.h
 )
 
 set(SOURCES
-### PUBLIC
-  ${PUBLIC_SRC}/my_server.cpp
+  ./src/my_server.cpp
+  ./src/md5_connection.cpp
+  ./src/sha1_connection.cpp
 )
-
-directory_source_group(./)
 
 
 add_library(${PROJECT_NAME} SHARED ${HEADERS} ${SOURCES})

@@ -2,13 +2,15 @@
 // stl
 #include <memory>
 #include <string>
-// hash
-#include <hash_type.h>
 
 
 namespace my_server {
-
+#if defined(WIN32) || defined(_WIN32)
+class __declspec( dllexport ) Server {
+#elif __linux__
 class Server {
+#endif
+
 public:
     Server();
     ~Server();
@@ -16,6 +18,13 @@ public:
     enum class IP_VERSION : uint8_t {
         IPv4 = 0,
         IPv6
+    };
+
+    enum class HASH_TYPE {
+        MD5 = 1,
+        SHA1,
+        SHA3,
+        SHA256
     };
 
     struct Params {

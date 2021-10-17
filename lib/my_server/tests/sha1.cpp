@@ -13,7 +13,7 @@
 #include <catch2/catch_all.hpp>
 
 my_server::Server srv;
-my_server::Server::Params params{32001, "0.0.0.0", my_server::Server::IP_VERSION::IPv4, my_server::HASH_TYPE::SHA1};
+my_server::Server::Params params{32001, "0.0.0.0", my_server::Server::IP_VERSION::IPv4, my_server::Server::HASH_TYPE::SHA1};
 
 const std::vector<std::string> vecInput = {
     R"(Hello, World!)",

@@ -11,7 +11,9 @@
 // main
 #include <my_server.h>
 //private header
-#include <hash_connection.h>
+#include <md5_connection.h>
+#include <sha1_connection.h>
+
 
 namespace my_server {
 class Server::PrivateData {
@@ -57,10 +59,10 @@ bool Server::start()
     Poco::Net::ServerSocket serverSocket(socketAddress);
 
     if (HASH_TYPE::MD5 == m_data->params.hashType) {
-        m_data->pocoServer = std::make_unique<Poco::Net::TCPServer>(new Poco::Net::TCPServerConnectionFactoryImpl<Hash<HASH_TYPE::MD5>>(), serverSocket);
+        m_data->pocoServer = std::make_unique<Poco::Net::TCPServer>(new Poco::Net::TCPServerConnectionFactoryImpl<HashMD5>(), serverSocket);
     }
     else if (HASH_TYPE::SHA1 == m_data->params.hashType) {
-        m_data->pocoServer = std::make_unique<Poco::Net::TCPServer>(new Poco::Net::TCPServerConnectionFactoryImpl<Hash<HASH_TYPE::SHA1>>(), serverSocket);
+        m_data->pocoServer = std::make_unique<Poco::Net::TCPServer>(new Poco::Net::TCPServerConnectionFactoryImpl<HashSHA1>(), serverSocket);
     }
     else {
         return false;
@@ -73,6 +75,10 @@ bool Server::start()
 
 void Server::stop()
 {
+    if (nullptr == m_data->pocoServer) {
+        return;
+    }
+
     m_data->pocoServer->stop();
 }
 

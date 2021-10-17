@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
-include(./general_cmake/general.cmake)
+include(./cmake/general.cmake)
 set(ROOT_PATH .)
 enable_testing()
 set_project_settings(main)
-copy_ctest_files()
 
 if (MSVC)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/Debug)
@@ -15,8 +14,6 @@ endif ()
 set(SOURCES
   ./main.cpp
 )
-
-directory_source_group(./)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

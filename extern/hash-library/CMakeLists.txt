@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
-include(../../general_cmake/general.cmake)
+include(../../cmake/general.cmake)
 set(ROOT_PATH .)
 
 set_project_settings(hash-library)
@@ -28,8 +28,6 @@ set(SOURCES
   ./hash-library/sha3.cpp
   ./hash-library/sha256.cpp
 )
-
-directory_source_group(./)
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
 

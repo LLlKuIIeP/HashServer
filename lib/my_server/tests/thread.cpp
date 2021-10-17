@@ -12,7 +12,7 @@
 #include <catch2/catch_all.hpp>
 
 my_server::Server srv;
-my_server::Server::Params params{32000, "0.0.0.0", my_server::Server::IP_VERSION::IPv4, my_server::HASH_TYPE::MD5};
+my_server::Server::Params params{32000, "0.0.0.0", my_server::Server::IP_VERSION::IPv4, my_server::Server::HASH_TYPE::MD5};
 
 constexpr char message[] = "Hello World!";
 
