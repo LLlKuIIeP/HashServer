@@ -33,7 +33,7 @@ macro(set_project_settings name)
     endif ()
   endif ()
 
-
+  message(STATUS "${CMAKE_CXX_FLAGS}")
 enable_testing()
 include(CTest)
 

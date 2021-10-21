@@ -7,7 +7,7 @@
 namespace my_server {
 
 
-class HashSHA1: public Poco::Net::TCPServerConnection {
+class /*__attribute__ ((visibility ("hidden")))*/ HashSHA1: public Poco::Net::TCPServerConnection {
 public:
     HashSHA1(Poco::Net::StreamSocket const& streamSocket): Poco::Net::TCPServerConnection(streamSocket)
     {}

@@ -3,13 +3,36 @@
 #include <memory>
 #include <string>
 
+// https://www.gnu.org/software/gnulib/manual/html_node/Exported-Symbols-of-Shared-Libraries.html
+// https://gcc.gnu.org/wiki/Visibility
+#if defined _WIN32 || defined __CYGWIN__
+  #ifdef BUILDING_DLL
+    #ifdef __GNUC__
+      #define DLL_PUBLIC __attribute__ ((dllexport))
+    #else
+      #define DLL_PUBLIC __declspec(dllexport) // Note: actually gcc seems to also supports this syntax.
+    #endif
+  #else
+    #ifdef __GNUC__
+      #define DLL_PUBLIC __attribute__ ((dllimport))
+    #else
+      #define DLL_PUBLIC __declspec(dllimport) // Note: actually gcc seems to also supports this syntax.
+    #endif
+  #endif
+  #define DLL_LOCAL
+#else
+  #if __GNUC__ >= 4
+    #define DLL_PUBLIC __attribute__ ((visibility ("default")))
+    #define DLL_LOCAL  __attribute__ ((visibility ("hidden")))
+  #else
+    #define DLL_PUBLIC
+    #define DLL_LOCAL
+  #endif
+#endif
 
 namespace my_server {
-#if defined(WIN32) || defined(_WIN32)
-class __declspec( dllexport ) Server {
-#elif __linux__
-class Server {
-#endif
+
+class DLL_PUBLIC Server {
 
 public:
     Server();
@@ -22,9 +45,7 @@ public:
 
     enum class HASH_TYPE {
         MD5 = 1,
-        SHA1,
-        SHA3,
-        SHA256
+        SHA1
     };
 
     struct Params {
@@ -47,6 +68,6 @@ private:
     class PrivateData;
     std::unique_ptr<PrivateData> m_data;
 
-    bool checkAddress() noexcept;
+    DLL_LOCAL bool checkAddress() noexcept;
 };
 } // my_server

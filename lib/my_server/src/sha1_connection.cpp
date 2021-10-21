@@ -1,7 +1,5 @@
 // stl
 #include <iostream>
-#include <string>
-#include <thread>
 // extern
 #include <sha1.h>
 // main
