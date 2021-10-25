@@ -6,7 +6,7 @@
 #include <sha1_connection.h>
 
 
-namespace my_server {
+namespace hash_server {
 
 void HashSHA1::run()
 {
@@ -30,4 +30,4 @@ void HashSHA1::run()
     }
 }
 
-} // my_server
+} // hash_server

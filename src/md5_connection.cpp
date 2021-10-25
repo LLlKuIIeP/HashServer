@@ -6,7 +6,7 @@
 #include <md5_connection.h>
 
 
-namespace my_server {
+namespace hash_server {
 
 void HashMD5::run()
 {
@@ -30,4 +30,4 @@ void HashMD5::run()
     }
 }
 
-} // my_server
+} // hash_server

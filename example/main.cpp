@@ -1,10 +1,10 @@
 #include <iostream>
-#include <my_server.h>
+#include <hash_server.h>
 
 
 int main()
 {
-    my_server::Server srv;
+    hash_server::HashServer srv;
     srv.start();
 
     while(1);

@@ -9,25 +9,25 @@
 #include <Poco/Net/TCPServerConnectionFactory.h>
 #include <Poco/Net/TCPServerConnection.h>
 // main
-#include <my_server.h>
+#include <hash_server.h>
 //private header
 #include <md5_connection.h>
 #include <sha1_connection.h>
 
 
-namespace my_server {
-class Server::PrivateData {
+namespace hash_server {
+class HashServer::PrivateData {
 public:
     Params params;
     std::unique_ptr<Poco::Net::TCPServer> pocoServer{ nullptr };
 };
 
-Server::Server() : m_data(std::make_unique<PrivateData>())
+HashServer::HashServer() : m_data(std::make_unique<PrivateData>())
 {}
 
-Server::~Server() = default;
+HashServer::~HashServer() = default;
 
-bool Server::setParams(Params const& param)
+bool HashServer::setParams(Params const& param)
 {
     if (!checkAddress()) {
         return false;
@@ -38,12 +38,12 @@ bool Server::setParams(Params const& param)
     return true;
 }
 
-Server::Params Server::getParams() const noexcept
+HashServer::Params HashServer::getParams() const noexcept
 {
     return m_data->params;
 }
 
-bool Server::start()
+bool HashServer::start()
 {
     if (nullptr != m_data->pocoServer) {
         return false;
@@ -73,7 +73,7 @@ bool Server::start()
     return true;
 }
 
-void Server::stop()
+void HashServer::stop()
 {
     if (nullptr == m_data->pocoServer) {
         return;
@@ -82,20 +82,20 @@ void Server::stop()
     m_data->pocoServer->stop();
 }
 
-int Server::countThreads() const noexcept
+int HashServer::countThreads() const noexcept
 {
     return m_data->pocoServer->currentThreads();
 }
 
-int Server::maxThread() const noexcept
+int HashServer::maxThread() const noexcept
 {
     return m_data->pocoServer->maxThreads();
 }
 
-bool Server::checkAddress() noexcept
+bool HashServer::checkAddress() noexcept
 {
     return true;
 }
 
 
-} // my_server
+} // hash_server

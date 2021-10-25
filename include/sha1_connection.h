@@ -4,7 +4,7 @@
 #include <Poco/Net/StreamSocket.h>
 
 
-namespace my_server {
+namespace hash_server {
 
 
 class /*__attribute__ ((visibility ("hidden")))*/ HashSHA1: public Poco::Net::TCPServerConnection {
@@ -20,4 +20,4 @@ private:
 
 
 
-} // my_server
+} // hash_server

@@ -29,24 +29,25 @@
     #define DLL_LOCAL
   #endif
 #endif
-
-namespace my_server {
+    /** \namespace hash_server
+     */
+namespace hash_server {
 
 /** \class Server
  *  \brief Server main class.
  */
-class DLL_PUBLIC Server {
+class DLL_PUBLIC HashServer {
 
 public:
     /**
      * A default constructor.
      */
-    Server();
+    HashServer();
 
     /**
      * A default destructor.
      */
-    ~Server();
+    ~HashServer();
 
     /** \enum IP_VERSION
      * \brief Type of address type.
@@ -116,4 +117,4 @@ private:
 
     DLL_LOCAL bool checkAddress() noexcept;
 };
-} // my_server
+} // hash_server
