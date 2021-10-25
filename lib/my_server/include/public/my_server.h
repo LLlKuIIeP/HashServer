@@ -32,22 +32,41 @@
 
 namespace my_server {
 
+/** \class Server
+ *  \brief Server main class.
+ */
 class DLL_PUBLIC Server {
 
 public:
+    /**
+     * A default constructor.
+     */
     Server();
+
+    /**
+     * A default destructor.
+     */
     ~Server();
 
+    /** \enum IP_VERSION
+     * \brief Type of address type.
+     */
     enum class IP_VERSION : uint8_t {
-        IPv4 = 0,
-        IPv6
+        IPv4 = 0,   /**< Internet Protocol version 4. */
+        IPv6        /**< Internet Protocol version 6. */
     };
 
+    /** \enum HASH_TYPE
+     *  \brief The type of hash function used.
+     */
     enum class HASH_TYPE {
-        MD5 = 1,
-        SHA1
+        MD5 = 1,     /**< Message Digest 5. 128-bit hashing algorithm. */
+        SHA1         /**< Secure Hash Algorithm 1. Cryptographic hashing algorithm. */
     };
 
+    /** \struct Params
+     *  \brief Contains parameters for starting the server.
+     */
     struct Params {
         uint16_t    port{ 12345 };
         std::string address{ "0.0.0.0" };
@@ -55,13 +74,40 @@ public:
         HASH_TYPE   hashType{ HASH_TYPE::MD5 };
     };
 
+    /** \fn setParams
+     *  \brief Setting server parameters.
+     *  \param[in] param struct Params
+     *  \return bool
+     */
     bool setParams(Params const& param);
+
+    /** \fn getParams
+     *  \brief Getting server parameters.
+     *  \return struct Params
+     */
     Params getParams() const noexcept;
 
+    /** fn start
+     * \brief Start server.
+     * \return bool
+     */
     bool start();
+
+    /** \fn stop
+     * \brief Stop server.
+     */
     void stop();
 
+    /** \fn countThreads
+     * \brief Returns the current number of server threads.
+     * \return count thread
+     */
     int countThreads() const noexcept;
+
+    /** \fn countThreads
+     * \brief Returns the maximum number of server threads.
+     * \return max threads
+     */
     int maxThread() const noexcept;
 
 private:
